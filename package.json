@@ -1,0 +1,39 @@
+{
+  "name": "spezzy",
+  "version": "0.0.1",
+  "description": "A simple Node app built on Express, instantly up and running.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "enmap": "^5.2.4",
+    "moment": "^2.26.0",
+    "moment-duration-format": "^2.2.2",
+    "express": "^4.17.1",
+    "http": "^0.0.0",
+    "fs": "^0.0.2",
+    "quick.db": "^7.1.1",
+    "path": "^0.12.7",
+    "ytdl-core-discord": "^1.2.0",
+    "ytdl-core": "^2.1.4",
+    "simple-youtube-api": "^5.2.1",
+    "@discordjs/opus": "^0.3.2",
+    "opusscript": "^0.0.7",
+    "yt-search": "^1.1.2",
+    "parse-ms": "^2.0.0"
+  },
+  "engines": {
+    "node": "12.14.1"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
