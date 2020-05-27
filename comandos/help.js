@@ -18,12 +18,12 @@ exports.run = async(client, message, args) => {
 
   let Cembed = new Discord.MessageEmbed()
   .setTitle("⚙️ **Configuráveis**")
-  .setDescription("`joinchannel` >> Defina o canal de entrada \n `joinmessage` >> Defina a mensagem de entrada \n `jointitle` >> Defina o título da mensagem de entrada \n `leavechannel` >> Defina o canal de saída \n `leavemessage` >> Defina a mensagem de saída \n `leavetitle` >> Defina o título da mensagem de saída \n `desc` >> Coloque uma descrição no seu perfil")
+  .setDescription("s!welcome >> Configure o sistema de entrada \n s!saida >> Configure o sistema de saída \n setsugestao >> Configure o canal de sugestões")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Oembed = new Discord.MessageEmbed()
   .setTitle("🎈 **Outros**")
-  .setDescription("`addemoji` >> Adicione um emoji no servidor \n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n `perfil` >> Veja o seu perfil")
+  .setDescription("`addemoji` >> Adicione um emoji no servidor \n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n `perfil` >> Veja o seu perfil \n sugestao >> Envie sua sugestão \n `notificar` >> Receba o cargo de notificações do servidor de suporte")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Devembed = new Discord.MessageEmbed()
@@ -43,7 +43,7 @@ exports.run = async(client, message, args) => {
   
   let Membed = new Discord.MessageEmbed()
   .setTitle("⚒️ **Moderação**")
-  .setDescription("`ban` >> Aplique um ban a uma pessoa \n `kick` >> Aplique um kick a uma pessoa \n `painel` >> Acesse o painel de configurações do servidor")
+  .setDescription("`ban` >> Aplique um ban a uma pessoa \n `kick` >> Aplique um kick a uma pessoa \n `painel` >> Acesse o painel de configurações do servidor \n `anunciar` >> Faça um anúncio no seu servidor!\n `mute` >> Mute um usuário \n `unmute` >> Desmute um usuário")
   .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
    let MuEmbed = new Discord.MessageEmbed()

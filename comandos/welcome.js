@@ -6,7 +6,7 @@ exports.run = async(client, message, args) => {
         const embed = new MessageEmbed()
             .setTitle(`__MENSAGEM__`)
             .setDescription(`» Escreva abaixo a mensagem de boas-vindas`)
-            .addField(`__**VARIAÇÕES**__`, `{member} - Menciona o usuário\n{users} - Puxa a quantidade de usuários no servidor\n{server} - Puxa o nome do servidor`)
+            .addField(`__**VARIAÇÕES**__`, `{membro} - Menciona o usuário\n{users} - Puxa a quantidade de usuários no servidor\n{servidor} - Puxa o nome do servidor`)
             .setColor('#206694')
             message.channel.send(embed).then(msg => {
             message.delete()

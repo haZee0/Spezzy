@@ -43,11 +43,16 @@ if(!message.content.startsWith(prefix)) return;
 let args = message.content.substring(prefix.length).split(" ");
 let command = args.shift().toLowerCase();
   
+  
+  let embed = new Discord.MessageEmbed()
+  .setDescription(`<:erro:712413899638702090> | ${message.author}, não encontrei esse comando em meu sistema!`)
+  .setColor('RED')
+  
 let arquivocmd = client.commands.get(command)
     if(arquivocmd) {
     if (arquivocmd) arquivocmd.run(client, message, args);
   } else {
-    message.channel.send(`${message.author}, esse comando não foi encontrado em meu sistema!`);
+    message.channel.send(embed);
   }
 
 });
@@ -88,8 +93,8 @@ client.on("guildMemberAdd", member => {
 
 var canal = member.guild.channels.cache.get(db.get(`wcanal_${member.guild.id}`));
  
-  let membro = mensagem.replace('{member}', member)
-  let servidor = membro.replace('{server}', member.guild.name)
+  let membro = mensagem.replace('{membro}', member)
+  let servidor = membro.replace('{servidor}', member.guild.name)
   let user = servidor.replace('{users}', member.guild.memberCount)
 
 

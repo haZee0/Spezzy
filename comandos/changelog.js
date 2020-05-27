@@ -23,7 +23,7 @@ exports.run = async(client, message, args) => {
     const lCanal = message.guild.channels.cache.find(
         channel => channel.id === ("712845698516648027")
     );
-        lCanal.send(lEmbed)
+        lCanal.send(`<@&714321107292782604>`, lEmbed)
 
 }
 

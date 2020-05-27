@@ -9,8 +9,8 @@ exports.run = async(client, message, args) => {
     let erro = new Discord.MessageEmbed()
     .setTitle("**Informações**")
     .setDescription("**Selecione o autorole do servidor**")
-    .addField("**Uso**", `\`${p.prefix}autorole <id do cargo>\``, true)
-    .addField("**Exemplo**", `\`${p.prefix}autorole **ID**\``, true)
+    .addField("**Uso**", `\`${p.prefix}autorole <cargo>\``, true)
+    .addField("**Exemplo**", `\`${p.prefix}autorole **@membro**\``, true)
     .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
     .setColor('GOLD')
 
