@@ -21,8 +21,8 @@ exports.run = async(client, message, args) => {
     .addField("**BitCodes**", `\`${reais} BitCodes\``, true)
     .addField("**Emprego**", `\`${emprego}\``)
     .setFooter(`Perfil de: ${member.username}`, member.avatarURL())
-    .setColor('GOLD')
-    .setThumbnail(member.avatarURL())
+    .setColor(db.get(`cor_${member.id}`))
+    .setThumbnail(db.get(`pimg_${member.id}`))
 
     message.channel.send(embed)
 }

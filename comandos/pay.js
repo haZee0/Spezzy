@@ -51,8 +51,8 @@ exports.run = async (client, message, args, config) => {
     }
 
     message.channel.send(`**${message.author.username}**, você realmente deseja pagar **¥ ${args[1]}** ao membro **${member.username}**?`).then(s => {
-      s.react('653747627019599882')
-        let filtro = (reaction, usuario) => reaction.emoji.id === "653747627019599882" && usuario.id === message.author.id;
+      s.react('👍')
+        let filtro = (reaction, usuario) => reaction.emoji.name === "👍" && usuario.id === message.author.id;
         let coletor = s.createReactionCollector(filtro, {max: 1, time: 36000});
 
         coletor.on("collect", c => {

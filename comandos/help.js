@@ -18,7 +18,7 @@ exports.run = async(client, message, args) => {
 
   let Cembed = new Discord.MessageEmbed()
   .setTitle("⚙️ **Configuráveis**")
-  .setDescription("s!welcome >> Configure o sistema de entrada \n s!saida >> Configure o sistema de saída \n setsugestao >> Configure o canal de sugestões \n `autorole` >> Configure o cargo de entrada do servidor \n `stafflog` >> Configure o canal de punições do servidor")
+  .setDescription("s!welcome >> Configure o sistema de entrada \n s!saida >> Configure o sistema de saída \n setsugestao >> Configure o canal de sugestões \n `autorole` >> Configure o cargo de entrada do servidor \n `stafflog` >> Configure o canal de punições do servidor \n `desc` >> Configure sua descrição do seu perfil \n `setimg` >> Configure a imagem do seu perfil \n `setcor` >> Configure a cor do seu perfil")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Oembed = new Discord.MessageEmbed()

@@ -2,7 +2,7 @@ const db = require('quick.db')
 const Discord = require('discord.js')
 
 exports.run = async(client, message, args) => {
-  const member = message.mentions.users.first() || message.author;
+  const member =  message.author;
   
   let desc = db.get(`desc_${member.id}`)
   if(!desc) desc = "Sem descrição definida"
