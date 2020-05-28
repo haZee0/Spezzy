@@ -9,15 +9,24 @@ exports.run = async(client, message, args) => {
     .addField("**Uso**", `\`${p.prefix}stafflog <id do canal>\``, true)
     .addField("**Exemplo**", `\`${p.prefix}stafflog **ID**\``, true)
     .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
-    .setColor('GOLD')
+    .setColor('RED')
+    
+    let erroB = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Você não tem permissão para utilizar esse comando!")
+    .setColor('RED')
+    
+    let ok = new Discord.MessageEmbed()
+    .setTitle("__**Sucesso!**__")
+    .setDescription("<a:check:715556795002650694> | Canal de punições setado com sucesso!")
 
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`${message.author}, você não tem permissção necessária para executar esse comando!`)
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(erroB)
     if(!args.join(" ")) return message.channel.send(erro)
     if(isNaN(args.join(" "))) return message.channel.send(erro)
 
     var canal = db.set(`punichannel_${message.guild.id}`, args.join(" ").trim())
 
-    message.channel.send("**Canal de punições setado com sucesso!**")
+    message.channel.send(ok)
 
 }
 

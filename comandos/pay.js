@@ -12,7 +12,7 @@ exports.run = async (client, message, args, config) => {
   .addField(`**Uso**`, `\`${c.prefix}pay <@pessoa> <valor>\``, true)
   .addField(`**Exemplo**`, `\`${c.prefix}pay @cereja 50\``, true)
   .addField(`**Permissão necessária**`, `\`Nenhuma\``)
-  .setColor('GOLD')  
+  .setColor('RED')  
 
     const member = message.mentions.users.first() 
 

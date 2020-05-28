@@ -18,7 +18,7 @@ exports.run = async(client, message, args) => {
         message.channel.send(e)
        
         } catch(err) {
-            message.channel.send(`**Algo deu errado...**\n\`\`\`\n${err}\`\`\``)
+            message.channel.send(`<:erro:712413899638702090> | **Algo deu errado...**\n\`\`\`\n${err}\`\`\``)
         }
     
 }

@@ -9,6 +9,11 @@ exports.run = async (client, message, args) => {
   if (emprego === 2) return message.channel.send(`**${message.author.username}**, você já tem um emprego! (🍃 Jardineiro)`)
   if (emprego === 3) return message.channel.send(`**${message.author.username}**, você já tem um emprego! (🔨 Pedreiro)`)
   if (emprego === 4) return message.channel.send(`**${message.author.username}**, você já tem um emprego! (✏️ Desenhista)`)
+  
+  let erro = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription("<:erro:712413899638702090> | Você demorou demais, cancelei a ação!")
+  .setColor('RED')
 
   let embed = new Discord.MessageEmbed()
   .setDescription(`Qual função você gostaria de exercer?\n\n💻 \`Programador\`\n🍃 \`Jardineiro\`\n🔨 \`Pedreiro\`\n✏️ \`Designer\``)
@@ -49,7 +54,7 @@ exports.run = async (client, message, args) => {
       
       })
       .catch(collected => {
-        message.reply('devido à sua demora, cancelei o pedido! Tente novamente.');
+        message.reply(erro);
       });
     })
   }

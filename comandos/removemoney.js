@@ -7,12 +7,23 @@ exports.run = async(client, message, args) => {
     return message.reply("Apenas desenvolvedores tem acesso a esse comando!")
   }
   
-  if(!args[0]) return message.channel.send("Escreva um número, por favor")
-  if(isNaN(args[0])) return message.channel.send("Um número, por favor")
+  let erro = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription("<:erro:712413899638702090> | Escreva uma quantia!")
+  .setColor('RED')
+  
+  if(!args[0]) return message.channel.send(erro)
+  if(isNaN(args[0])) return message.channel.send(erro)
   
   let member = message.mentions.users.first() || message.guil.members.cache.get(args[1]) || message.author;
+
   
-  message.channel.send(`**${message.author}** removeu **${args[0]} BitCodes** da conta do usuário **${member}**`)
+    let ok = new Discord.MessageEmbed()
+    .setTitle("__**Sucesso!**__")
+    .setDescription(`<a:check:715556795002650694> | ${message.author} removeu **${args[0]} BitCodes na conta do membero **${member}**`)
+    .setColor('GREEN')
+    
+  message.channel.send(ok)
   db.subtract(`reais_${member.id}`, args[0])
 
 }

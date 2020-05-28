@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
             .setTitle(`DAILY`)
             .addField(`Hoje você recebeu`, `**${amount} BitCodes**`)
             .setThumbnail(foto)
-            .setColor('RANDOM')
+            .setColor('GREEN')
 
             message.channel.send(embed)
     

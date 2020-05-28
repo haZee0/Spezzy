@@ -3,15 +3,37 @@ const { YOUTUBE_API_KEY } = require("../config.json");
 const ytdl = require("ytdl-core");
 const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../music") 
+const { play } = require("../music")
+const Discord = require('discord.js')
 module.exports.run = async (client,message,args) => {
+    let erroA = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Tente utilizar `play <URL> ou nome da música!`")
+    .setColor('RED')
+    
+    let erroB = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Você precisa estar em um canal de voz!")
+    .setColor('RED')
+    
+    let erroC = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Playlists não podem ser tocadas!")
+    .setColor('RED')
+    
+    let erroD = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Este vídeo tem copyright!")
+    .setColor('RED')
+
+  
     if (!args.length) {
-      return message.channel.send("Tente `play <URL> ou nome da música`");
+      return message.channel.send(erroA);
     }
 
     const { channel } = message.member.voice;
     if (!channel) {
-      return message.channel.send("Você precisa estar em um canal de voz :/");
+      return message.channel.send(erroB);
     }
 
     const targetsong = args.join(" ");
@@ -20,7 +42,7 @@ module.exports.run = async (client,message,args) => {
     const urlcheck = videoPattern.test(args[0]);
 
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      return message.channel.send("Playlists não podem ser tocadas");
+      return message.channel.send(erroC);
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
@@ -49,7 +71,7 @@ module.exports.run = async (client,message,args) => {
       } catch (error) {
         if (message.include === "copyright") {
           return message
-            .reply("Este vídeo tem copyright -_-")
+            .reply(erroD)
             .catch(console.error);
         } else {
           console.error(error);
@@ -71,7 +93,12 @@ module.exports.run = async (client,message,args) => {
     
     if(serverQueue) {
       serverQueue.songs.push(song)
-      return serverQueue.textChannel.send(`\`${song.title}\`, Música adicionada a lista.`)
+         let ok1 = new Discord.MessageEmbed()
+          .setTitle("__**SUCESSO**__")
+          .setDescription(`<a:check:715556795002650694> | Música ${song.title} adicionada na fila!`)
+          .setColor('GREEN')
+  
+      return serverQueue.textChannel.send(ok1)
       .catch(console.error)
     } else {
       queueConstruct.songs.push(song);
@@ -84,10 +111,13 @@ module.exports.run = async (client,message,args) => {
         queueConstruct.connection = await channel.join();
         play(queueConstruct.songs[0], message);
       } catch (error) {
-        console.error(`Não pude entrar no canal de voz :(: ${error}`);
+          let erroE = new Discord.MessageEmbed()
+          .setTitle("__**ERRO**__")
+          .setDescription(`<:erro:712413899638702090> | Não pude entrar no canal de voz devido a ${error}`)
+        console.error(erroE);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send({embed: {"description": `😭 | Não consegui entrar no canal ${error}`, "color": "#ff2050"}}).catch(console.error);
+        return message.channel.send(erroE).catch(console.error);
       }
     }
     

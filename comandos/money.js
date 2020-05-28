@@ -10,7 +10,7 @@ exports.run = async(client, message, args) => {
     let embed = new Discord.MessageEmbed()
 
     .addField(`**Saldo atual**`, `**${reais} BitCodes**`)
-    .setColor('GOLD')
+    .setColor('GREEN')
     .setThumbnail(member.displayAvatarURL())
     .setFooter(`${member.username}`)
 

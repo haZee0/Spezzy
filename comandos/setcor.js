@@ -10,8 +10,8 @@ exports.run = async(client, message, args) => {
   .setColor('RED')
   
   let ok = new Discord.MessageEmbed()
-  .setTitle("**__Sucesso__**")
-  .setDescription('Sua cor de perfil foi alterado com sucesso!')
+  .setTitle("**__Sucesso!__**")
+  .setDescription('<a:check:715556795002650694> | Sua cor de perfil foi alterado com sucesso!')
   .setColor('GREEN')
   
   let cor = db.get(`cor_${member.id}`)

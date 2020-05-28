@@ -7,6 +7,11 @@ exports.run = async(client, message, args) => {
   let quantia = Math.floor(Math.random() * 500) + 250
   let trabalho = await db.fetch(`work_${message.author.id}`)
   
+  let erroA = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription("<:erro:712413899638702090> | Você está desempregado, para conseguir um emprego, digite `s!emprego` !")
+  .setColor('RED')
+  
   if(trabalho !== null && timeout - (Date.now() - trabalho) > 0){
     let time = ms(timeout - (Date.now() - trabalho));
     
@@ -23,16 +28,16 @@ exports.run = async(client, message, args) => {
     if(emprego === 4) emprego = "✏️ Desenhista"
     
     if(emprego === null) {
-      return message.reply("você está desempregado, para conseguir um emprego, digite `s!emprego`")
+      return message.channel.send(erroA)
     } else {
       
     }
     
     let embed = new Discord.MessageEmbed()
     .setTitle("Work!")
-    .addField("Hoje você recebeu", `**${quantia} BitCodes**`)
-    .addField("Emprego", `**${emprego}**`)
-    .setColor('GOLD')
+    .addField("💸 >> Hoje você recebeu", `**${quantia} BitCodes**`)
+    .addField("💼 >> Emprego", `**${emprego}**`)
+    .setColor('GREEN')
     
     message.channel.send(embed)
     db.add(`reais_${message.author.id}`, quantia)

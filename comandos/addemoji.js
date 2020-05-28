@@ -11,7 +11,8 @@ exports.run = (client,message,args) => {
         {name: `:books: **EXEMPLO**`, value: `\`${c.prefix}addemoji caradebiscoito https://discordemoji.com\``},
         {name: `:bookmark: **PERMISSÃO**`, value: `\`MANAGE_EMOJIS\``}
     )
-    .setColor("GOLD")
+    .setColor("RED")
+    
 
     if(!args[0]) {
         return message.channel.send(emb)

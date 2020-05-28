@@ -10,15 +10,25 @@ exports.run = async(client, message, args) => {
   .addField("**Uso**", `\`${p.prefix}setsugestao <id>\``, true)
   .addField("**Exemplo**", `\`${p.prefix}setsugestao **ID**\``, true)
   .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
-  .setColor('GOLD')
+  .setColor('RED')
   
-  if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Você não tem permissão para executar esse comando!")
+  let erroB = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription("<:erro:712413899638702090> | Você não tem permissão para utilizar esse comando!")
+  .setColor('RED')
+  
+  let ok = new Discord.MessageEmbed()
+  .setTitle("__**Sucesso!**__")
+  .setDescription("<a:check:715556795002650694> | Configuração do canal de sugestões concluída com sucesso!")
+  .setColor('GREEN')
+  
+  if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(erroB)
   
   if(!args.slice(0).join(" ")) return message.channel.send(erro)
   const canal = db.set(`sugest_${message.guild.id}`, args.join(" ").trim())
   if(isNaN(args.join(' '))) return message.channel.send(erro)
   
-  message.channel.send("**Configuração do canal de sugestões concluída com sucesso!**")
+  message.channel.send(ok)
 }
 
 exports.help = {

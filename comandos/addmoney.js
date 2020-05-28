@@ -6,13 +6,23 @@ exports.run = async(client, message, args) => {
     if(!['360834865639325697', '397725731985293312', '572827880091025408'].includes(message.author.id)){
         return message.reply(`Esse comando só pode ser executado pelos desenvolvedores :)`)
     }
+  
+  let erro = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription("<:erro:712413899638702090> | Escreva uma quantia!")
+  .setColor('RED')
 
-    if(!args[0]) return message.channel.send(`Escreva uma quantia a ser depositada`)
-    if(isNaN(args[0])) return message.channel.send(`Um número por favor!`)
+    if(!args[0]) return message.channel.send(erro)
+    if(isNaN(args[0])) return message.channel.send(erro)
 
     let member = message.mentions.users.first() || message.guild.members.cache.get(args[1]) || message.author;
+  
+    let ok = new Discord.MessageEmbed()
+    .setTitle("__**Sucesso!**__")
+    .setDescription(`<a:check:715556795002650694> | ${message.author} depositou **${args[0]} BitCodes na conta do membero **${member}**`)
+    .setColor('GREEN')
 
-    message.channel.send(`${message.author} depositou **${args[0]}** BitCodes na conta do membro ${member}`)
+    message.channel.send(ok)
     db.add(`reais_${member.id}`, args[0])
 
 }

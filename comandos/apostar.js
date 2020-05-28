@@ -9,7 +9,7 @@ exports.run = async(client, message, args) => {
     .addField("**Uso**", `\`${p.prefix}apostar <valor>\``, true)
     .addField("**Exemplo**", `\`${p.prefix}apostar 50\``, true)
     .addField("**Permissão necessária**", `\`Nenhuma\``)
-    .setColor('GOLD')
+    .setColor('RED')
 
     var money = await db.get(`reais_${message.author.id}`)
 

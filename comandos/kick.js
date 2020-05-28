@@ -13,6 +13,11 @@ exports.run = (client,message,args) => {
         {name: `:bookmark: **Permissão**`, value: `\`KICK_MEMBERS\``}    )
 
     .setColor("RED")
+    
+    let erro = new Discord.MessageEmbed()
+    .setTitle("__**ERRO**__")
+    .setDescription("<:erro:712413899638702090> | Você não tem permissão para utilizar esse comando!")
+    .setColor('RED')
 
     let membro = message.mentions.members.first()
 
@@ -35,13 +40,13 @@ exports.run = (client,message,args) => {
     }
 
     if(!message.member.hasPermission("KICK_MEMBERS")) {
-        return message.reply("Você não possui a permissão `KICK_MEMBERS`.")
+        return message.reply(erro)
     }
 
     let kickembed = new Discord.MessageEmbed()
 
     .setTitle("Confirmação")
-    .setDescription(`**${message.author.username}**, você realmente deseja aplicar esse banimento em **${membro.user.username}**?`)
+    .setDescription(`**${message.author.username}**, você realmente deseja aplicar essa punição em **${membro.user.username}**?`)
     .setColor('AQUA')
     .setFooter(`Clique no emoji para confirmar, caso mude de ideia espere 30s para cancelar`)
 

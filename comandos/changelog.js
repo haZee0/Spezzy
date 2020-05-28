@@ -23,7 +23,14 @@ exports.run = async(client, message, args) => {
     const lCanal = message.guild.channels.cache.find(
         channel => channel.id === ("712845698516648027")
     );
+  
+    let ok = new Discord.MessageEmbed()
+    .setTitle("__**Sucesso!**__")
+    .setDescription(`<a:check:715556795002650694> | ChangeLog enviado com sucesso para o canal ${lCanal}`)
+    .setColor('GREEN')
+  
         lCanal.send(`<@&714321107292782604>`, lEmbed)
+  message.channel.send(ok)
 
 }
 

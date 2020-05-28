@@ -12,14 +12,18 @@ exports.run = async(client, message, args) => {
     .addField("**Uso**", `\`${p.prefix}autorole <cargo>\``, true)
     .addField("**Exemplo**", `\`${p.prefix}autorole **@membro**\``, true)
     .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
-    .setColor('GOLD')
+    .setColor('RED')
+    
+    let ok = new Discord.MessageEmbed()
+    .setTitle("__**Sucesso!**__")
+    .setDescription("<a:check:715556795002650694> | Autorole configurado com sucesso!")
 
     if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`${message.author}, você não tem permissão para executar esse comando!`)
     if(!args.join(" ")) return message.channel.send(erro)
 
     db.set(`autorole_${message.guild.id}`, cargo.id)
 
-    message.channel.send("**Configuração do AutoRole concluída com sucesso!**")
+    message.channel.send(ok)
 
 }
 

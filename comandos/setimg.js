@@ -12,7 +12,7 @@ exports.run = async(client, message, args) => {
   
   let ok = new Discord.MessageEmbed()
   .setTitle("**__Sucesso!__**")
-  .setDescription("Sua imagem de perfil foi alterada com sucesso!")
+  .setDescription("<a:check:715556795002650694> | Sua imagem de perfil foi alterada com sucesso!")
   .setColor('GREEN')
   
   let pimg = db.get(`pimg_${member.id}`)
