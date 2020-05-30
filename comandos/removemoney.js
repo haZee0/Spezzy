@@ -3,7 +3,7 @@ const db = require('quick.db')
 const p = require('../config.json')
 
 exports.run = async(client, message, args) => {
-  if(!['360834865639325697','397725731985293312','572827880091025408'].includes(message.author.id)){
+  if(!['360834865639325697','397725731985293312','572827880091025408', '599563864509513739'].includes(message.author.id)){
     return message.reply("Apenas desenvolvedores tem acesso a esse comando!")
   }
   

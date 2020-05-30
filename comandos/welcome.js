@@ -2,6 +2,7 @@ exports.run = async(client, message, args) => {
 
         const db = require('quick.db')
         const { MessageEmbed } = require('discord.js')
+        
 
         const embed = new MessageEmbed()
             .setTitle(`__MENSAGEM__`)

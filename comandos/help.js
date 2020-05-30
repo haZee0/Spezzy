@@ -18,17 +18,17 @@ exports.run = async(client, message, args) => {
 
   let Cembed = new Discord.MessageEmbed()
   .setTitle("⚙️ **Configuráveis**")
-  .setDescription("`welcome` >> Configure o sistema de entrada \n `saida` >> Configure o sistema de saída \n `setsugestao` >> Configure o canal de sugestões \n `autorole` >> Configure o cargo de entrada do servidor \n `stafflog` >> Configure o canal de punições do servidor \n `desc` >> Configure sua descrição do seu perfil \n `setimg` >> Configure a imagem do seu perfil \n `setcor` >> Configure a cor do seu perfil")
+  .setDescription("`painel` >> Tenha acesso ao painel de configurações do servidor!\n`desc` >> Configure sua descrição do seu perfil \n `setimg` >> Configure a imagem do seu perfil \n `setcor` >> Configure a cor do seu perfil")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Oembed = new Discord.MessageEmbed()
   .setTitle("🎈 **Outros**")
-  .setDescription("`addemoji` >> Adicione um emoji no servidor \n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n sugestao >> Envie sua sugestão \n `notificar` >> Receba o cargo de notificações do servidor de suporte")
+  .setDescription("Desenvolvimento")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Devembed = new Discord.MessageEmbed()
   .setTitle("💻 **Desenvolvedores**")
-  .setDescription("`eval` >> Utilize propriedades pelo chat \n `changelog` >> Publique atualizações no servidor de suporte \n `addmoney` >> Adicione BitCodes da conta de um usuário! \n `removemoney` >> Remova BitCodes da conta de um usuário!")
+  .setDescription("`eval` >> Utilize propriedades pelo chat \n `changelog` >> Publique atualizações no servidor de suporte \n `addmoney` >> Adicione BitCodes da conta de um usuário! \n `removemoney` >> Remova BitCodes da conta de um usuário!\n `reiniciar` >> Comando para reiniciar o bot")
   .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
   let Eembed = new Discord.MessageEmbed()
@@ -38,12 +38,12 @@ exports.run = async(client, message, args) => {
 
   let Divembed = new Discord.MessageEmbed()
    .setTitle("🎉 **Diversão**")
-  .setDescription("`dado` >> Jogue um dado \n `piada` >> Ria com piadas")
+  .setDescription("`dado` >> Jogue um dado \n `piada` >> Ria com piadas\n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n `sugestao` >> Envie sua sugestão \n `notificar` >> Receba o cargo de notificações do servidor de suporte\n `kiss` >> 'Beije' algum usuário")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
   
   let Membed = new Discord.MessageEmbed()
   .setTitle("⚒️ **Moderação**")
-  .setDescription("`ban` >> Aplique um ban a uma pessoa \n `kick` >> Aplique um kick a uma pessoa \n `painel` >> Acesse o painel de configurações do servidor \n `anunciar` >> Faça um anúncio no seu servidor!\n `mute` >> Mute um usuário \n `unmute` >> Desmute um usuário \n `clear` >> Limpe uma quantidade de mensagens de um chat \n `warn` >> Aplique um aviso a um usuário")
+  .setDescription("`ban` >> Aplique um ban a uma pessoa \n `kick` >> Aplique um kick a uma pessoa \n `painel` >> Acesse o painel de configurações do servidor \n `anunciar` >> Faça um anúncio no seu servidor!\n `mute` >> Mute um usuário \n `unmute` >> Desmute um usuário \n `clear` >> Limpe uma quantidade de mensagens de um chat \n `warn` >> Aplique um aviso a um usuário \n `addemoji` >> Adicione um emoji no servidor")
   .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
 
    let MuEmbed = new Discord.MessageEmbed()

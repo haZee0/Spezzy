@@ -2,12 +2,12 @@ const db = require("quick.db")
 const p = require("../config.json")
 const Discord = require("discord.js")
 
-exports.run = async(client, message, args) => {
+exports.run = async(client, message, args, prefix) => {
     let erro = new Discord.MessageEmbed()
     .setTitle(`Informações`)
     .setDescription(`**Selecione o canal de punições!**`)
-    .addField("**Uso**", `\`${p.prefix}stafflog <id do canal>\``, true)
-    .addField("**Exemplo**", `\`${p.prefix}stafflog **ID**\``, true)
+    .addField("**Uso**", `\`${prefix}stafflog <id do canal>\``, true)
+    .addField("**Exemplo**", `\`${prefix}stafflog **ID**\``, true)
     .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
     .setColor('RED')
     
@@ -19,6 +19,7 @@ exports.run = async(client, message, args) => {
     let ok = new Discord.MessageEmbed()
     .setTitle("__**Sucesso!**__")
     .setDescription("<a:check:715556795002650694> | Canal de punições setado com sucesso!")
+    .setColor('GREEN')
 
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(erroB)
     if(!args.join(" ")) return message.channel.send(erro)

@@ -2,13 +2,13 @@ const db = require('quick.db')
 const p = require('../config.json')
 const Discord = require('discord.js')
 
-exports.run = async(client, message, args) => {
+exports.run = async(client, message, args, prefix) => {
   let erro = new Discord.MessageEmbed()
   
   .setTitle('Informação')
   .setDescription("**Selecione o canal para enviar sugestões**")
-  .addField("**Uso**", `\`${p.prefix}setsugestao <id>\``, true)
-  .addField("**Exemplo**", `\`${p.prefix}setsugestao **ID**\``, true)
+  .addField("**Uso**", `\`${prefix}setsugestao <id>\``, true)
+  .addField("**Exemplo**", `\`${prefix}setsugestao **ID**\``, true)
   .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
   .setColor('RED')
   
@@ -25,7 +25,7 @@ exports.run = async(client, message, args) => {
   if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(erroB)
   
   if(!args.slice(0).join(" ")) return message.channel.send(erro)
-  const canal = db.set(`sugest_${message.guild.id}`, args.join(" ").trim())
+  db.set(`sugest_${message.guild.id}`, args.join(" ").trim())
   if(isNaN(args.join(' '))) return message.channel.send(erro)
   
   message.channel.send(ok)

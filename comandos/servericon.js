@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 
     .setColor('#FFFF')
     .setTitle(`${message.author.username}`)
-    .setDescription("**[Baixe-a](" + message.guild.iconURL()+ ")**")
+    .setDescription("**[Baixe-a](" + message.guild.iconURL({size: 2048})+ ")**")
     .setImage(message.guild.iconURL())
 
     message.reply(embed)

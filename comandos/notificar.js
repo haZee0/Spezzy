@@ -2,6 +2,8 @@ const Discord = require('discord.js'); // puxando a livraria Discord.js
 
 exports.run = (client, message, args) => { 
   
+  //coloque aqui um if!
+  
     let r = new Discord.MessageEmbed()
     .setTitle("__**NOTIFICAÇÕES**__")
     .setDescription("<a:check:715556795002650694> | Removi seu cargo de notificações com sucesso!")

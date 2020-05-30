@@ -16,9 +16,19 @@ exports.run = async (client,message,args) => {
   let erroC = new Discord.MessageEmbed()
   .setTitle("__**ERRO**__")
   .setDescription("<:erro:712413899638702090> | Você precisa citar um motivo!")
-
-
-    if(!message.member.hasPermission("MANAGE_ROLES")) {
+  .setColor('RED')
+  
+  let erroD = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription('<:erro:712413899638702090> | Não existe um cargo de Mute configurado neste servidor!')
+  .setColor('RED')
+  
+  let erroE = new Discord.MessageEmbed()
+  .setTitle("__**ERRO**__")
+  .setDescription('<:erro:712413899638702090> | O cargo de Mute configurado neste servidor não existe!')
+  .setColor('RED')
+  
+  if(!message.member.hasPermission("MANAGE_ROLES")) {
         return message.channel.send(erroA);
     }
 
@@ -29,35 +39,21 @@ exports.run = async (client,message,args) => {
 
     let razao = args.slice(1).join(" ");
     if(!razao) {
-        message.channel.send(erroC)
+        return message.channel.send(erroC)
     }
 
-    let muter = message.guild.roles.cache.find(x => x.name === "Muted");
-    if(!muter) {
-        try{
-            muter = await message.guild.roles.create({
-data: { 
-    name: "Muted",
-    color: "#ababab",
-    permissions: []
-}
-})
-            message.guild.channels.cache.forEach(async (channel, id) => {
-               await message.channel.createOverwrite(muter, {
-   SEND_MESSAGES: false
- })
-            }) 
-        }catch(e){
-            console.log(e.stack)
-        }
-    }
+  let pushmuter = db.get(`muterole_${message.guild.id}`)
+  if(!pushmuter) return message.channel.send(erroD)
+  
+    let muter = message.guild.roles.cache.get(pushmuter)
+    if(!muter) return message.channel.send(erroE)
 
-let embed = new Discord.MessageEmbed()
+  let embed = new Discord.MessageEmbed()
 
 .setTitle(`${message.guild.name} - Mute.`)
-.setDescription(`O usuário ${mut} foi mutado!`)
+.setDescription(`O usuário ` + mut.user.username + ` foi mutado!`)
 .addField(`Motivo:`, `${razao}`)
-.addField("Autor do mute:", `${message.author.username}`)
+.addField("Autor do mute:", message.author.username)
 .setColor("RED")
 
 

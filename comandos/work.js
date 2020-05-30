@@ -2,14 +2,14 @@ const db = require('quick.db')
 const ms = require('parse-ms')
 const Discord = require('discord.js')
 
-exports.run = async(client, message, args) => {
+exports.run = async(client, message, args, prefix) => {
   let timeout = 1.8e+7
   let quantia = Math.floor(Math.random() * 500) + 250
   let trabalho = await db.fetch(`work_${message.author.id}`)
   
   let erroA = new Discord.MessageEmbed()
   .setTitle("__**ERRO**__")
-  .setDescription("<:erro:712413899638702090> | Você está desempregado, para conseguir um emprego, digite `s!emprego` !")
+  .setDescription("<:erro:712413899638702090> | Você está desempregado, para conseguir um emprego, digite `" + prefix + "emprego` !")
   .setColor('RED')
   
   if(trabalho !== null && timeout - (Date.now() - trabalho) > 0){

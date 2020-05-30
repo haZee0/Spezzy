@@ -5,10 +5,10 @@ const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
 const { play } = require("../music")
 const Discord = require('discord.js')
-module.exports.run = async (client,message,args) => {
+module.exports.run = async (client,message,args, prefix) => {
     let erroA = new Discord.MessageEmbed()
     .setTitle("__**ERRO**__")
-    .setDescription("<:erro:712413899638702090> | Tente utilizar `play <URL> ou nome da música!`")
+    .setDescription("<:erro:712413899638702090> | Tente utilizar `" + prefix + "play <URL> ou nome da música!`")
     .setColor('RED')
     
     let erroB = new Discord.MessageEmbed()

@@ -1,15 +1,15 @@
 const Discord = require('discord.js');
 const c = require('../config.json');
 const db = require('quick.db')
-exports.run = (client,message,args) => {
+exports.run = (client,message,args,prefix) => {
 
     let kemb = new Discord.MessageEmbed()
 
     .setTitle(`❓ INFORMAÇÃO DO COMANDO`)
     .setDescription(`\`ban\` -> Expulse um usuário`)
     .addFields(
-        {name: `**Uso**`, value:  `\`${c.prefix}kick @user <motivo>\``},
-        {name: `:books: **Exemplo**`, value: `\`${c.prefix}kick @nescauh chatão\``},
+        {name: `**Uso**`, value:  `\`${prefix}kick @user <motivo>\``},
+        {name: `:books: **Exemplo**`, value: `\`${prefix}kick @nescauh chatão\``},
         {name: `:bookmark: **Permissão**`, value: `\`KICK_MEMBERS\``}    )
 
     .setColor("RED")
@@ -65,7 +65,7 @@ exports.run = (client,message,args) => {
              .setColor('#ff5d52')
              var canal = message.guild.channels.cache.get(db.get(`punichannel_${message.guild.id}`))
              if(!canal){
-                 message.chaannel.send(`Caso deseje escolher um canal para enviar punições, utilize \`${c.prefix}stafflog\``, embed)
+                 message.chaannel.send(`Caso deseje escolher um canal para enviar punições, utilize \`${prefix}stafflog\``, embed)
                  membro.kick();
              } else {
                 canal.send(embed)

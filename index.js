@@ -35,10 +35,22 @@ fs.readdir("./comandos/", (err, files) => {{}
 });
 
 client.on('message', message => {
+
   if(message.author.bot) return;
   if (message.channel.type === "dm") return;
 
-let prefix = config.prefix;
+let base_prefix = config.prefix;
+let server_prefix = db.get(`prefix_${message.guild.id}`)
+let prefix;
+
+if(!server_prefix) prefix = base_prefix
+if(server_prefix) prefix = server_prefix
+  
+let oi = new Discord.MessageEmbed()
+.setDescription(`Olá ${message.author}, está com problemas? Utilize \`${prefix}help\``)
+
+if(message.content.includes(`<@${client.user.id}>`) || message.content.includes(`<@!${client.user.id}>`)) return message.channel.send(oi)
+  
 if(!message.content.startsWith(prefix)) return;
 let args = message.content.substring(prefix.length).split(" ");
 let command = args.shift().toLowerCase();
@@ -50,7 +62,7 @@ let command = args.shift().toLowerCase();
   
 let arquivocmd = client.commands.get(command)
     if(arquivocmd) {
-    if (arquivocmd) arquivocmd.run(client, message, args);
+    if (arquivocmd) arquivocmd.run(client, message, args, prefix);
   } else {
     message.channel.send(embed);
   }
@@ -93,16 +105,16 @@ client.on("guildMemberAdd", member => {
 
 var canal = member.guild.channels.cache.get(db.get(`wcanal_${member.guild.id}`));
  
-  let membro = mensagem.replace('{membro}', member)
-  let servidor = membro.replace('{servidor}', member.guild.name)
-  let user = servidor.replace('{users}', member.guild.memberCount)
+  while(mensagem.includes('{membro}')) mensagem = mensagem.replace('{membro}', member)
+  while(mensagem.includes('{servidor}')) mensagem = mensagem.replace('{servidor}', member.guild.name)
+  while(mensagem.includes('{users}')) mensagem = mensagem.replace('{users}', member.guild.memberCount)
 
 
   const embed = new MessageEmbed()
 
     .setThumbnail(member.user.displayAvatarURL())
     .setTitle(titulo)
-    .setDescription(`${user}`)
+    .setDescription(`${mensagem}`)
     .setColor("#206694")
   
     canal.send(embed)

@@ -17,7 +17,8 @@ exports.run = async(client, message, args) => {
     if(desc === null) desc = "Nenhuma descrição"
 
     let embed = new Discord.MessageEmbed()
-    .setDescription(`**📑 >> Descrição:`, `${desc}`)
+    .setTitle("**Perfil**")
+    .addField(`**📑 >> Descrição:**`, `${desc}`)
     .addField("**💸 >> BitCodes:**", `\`${reais} BitCodes\``, true)
     .addField("**💼 >> Emprego:**", `\`${emprego}\``)
     .setFooter(`Perfil de: ${member.username}`, member.avatarURL())

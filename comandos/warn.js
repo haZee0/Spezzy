@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const p = require('../config.json')
 
-exports.run = async(client, message, args) => {
+exports.run = async(client, message, args, prefix) => {
   let erroA = new Discord.MessageEmbed()
     .setTitle("__**ERRO**__")
     .setDescription("<:erro:712413899638702090> | Você não tem permissão para utilizar esse comando!")
@@ -24,8 +24,8 @@ exports.run = async(client, message, args) => {
   let erro = new Discord.MessageEmbed()
   .setTitle("Informação")
   .setDescription("**Aplique um warn a um usuário**")
-  .addField("**Uso**", `\`${p.prefix}warn <pessoa> <motivo>\``, true)
-  .addField("**Exemplo**", `\`${p.prefix}warn cereja xingamentos em massa\``, true)
+  .addField("**Uso**", `\`${prefix}warn <pessoa> <motivo>\``, true)
+  .addField("**Exemplo**", `\`${prefix}warn cereja xingamentos em massa\``, true)
   .addField("**Permissão necessária**", `\`ADMINISTRATOR\``)
   .setColor('RED')
   

@@ -2,13 +2,13 @@ const db = require('quick.db')
 const p = require('../config.json')
 const Discord = require('discord.js')
 
-exports.run = async(client, message, args) => {
+exports.run = async(client, message, args, prefix) => {
   let erro = new Discord.MessageEmbed()
   
   .setTitle(`Informação`)
   .setDescription("**Envie uma sugestão para melhorar o servidor**")
-  .addField("**Uso**", `\`${p.prefix}sugestao <sua_sugestao>\``, true)
-  .addField("**Exemplo**", `\`${p.prefix}sugestao Adicionar o cargo x\``, true)
+  .addField("**Uso**", `\`${prefix}sugestao <sua_sugestao>\``, true)
+  .addField("**Exemplo**", `\`${prefix}sugestao Adicionar o cargo x\``, true)
   .addField("**Permissão necessária**", `\`Nenhuma\``)
   .setColor('GOLD')
   
@@ -27,7 +27,7 @@ exports.run = async(client, message, args) => {
   .setThumbnail(message.guild.iconURL())
   
   var canal = message.guild.channels.cache.get(db.get(`sugest_${message.guild.id}`))
-  if(!canal) return message.reply("Esse servidor não possuí nenhum canal para mandar sugestões, use `s!setsugestao`")
+  if(!canal) return message.reply("Esse servidor não possuí nenhum canal para mandar sugestões, use `" + prefix + "setsugestao`")
   
   canal.send(embed)
   .then(function(msg) {

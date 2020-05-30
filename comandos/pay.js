@@ -3,14 +3,14 @@ const Discord = require("discord.js")
 const db = require('quick.db')
 const c = require('../config.json');
 
-exports.run = async (client, message, args, config) => {
+exports.run = async (client, message, args, prefix) => {
   
    let erro = new Discord.MessageEmbed()
 
   .setTitle(`INFORMAÇÃO`)
   .setDescription(`*Pague BitCodes para um usuário*`)
-  .addField(`**Uso**`, `\`${c.prefix}pay <@pessoa> <valor>\``, true)
-  .addField(`**Exemplo**`, `\`${c.prefix}pay @cereja 50\``, true)
+  .addField(`**Uso**`, `\`${prefix}pay <@pessoa> <valor>\``, true)
+  .addField(`**Exemplo**`, `\`${prefix}pay @cereja 50\``, true)
   .addField(`**Permissão necessária**`, `\`Nenhuma\``)
   .setColor('RED')  
 

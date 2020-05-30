@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 exports.run = async(client, message, args) => {
-    if (!['360834865639325697','397725731985293312','572827880091025408'].includes(message.author.id)) {
+    if (!['360834865639325697','397725731985293312','572827880091025408', '599563864509513739'].includes(message.author.id)) {
     return message.channel.send(`apenas meu desenvolvedor pode utilizar esse comando.`)
     }
   
