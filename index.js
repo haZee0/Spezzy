@@ -96,13 +96,6 @@ let command = args.shift().toLowerCase();
   .setDescription(`<:erro:712413899638702090> | ${message.author}, não encontrei esse comando em meu sistema!`)
   .setColor('RED')
   
-  let manu = await db.fetch(`manutencao_bot_${command}`);
-      let motivo = await db.fetch(`manutencao_motivo_${command}`);
-      if (manu) {
-        if(message.author.id == "")
-        return message.reply("O comando **" + command + "** esta em manutenção! \n Pelo motivo:" + motivo);
-      }
-  
 let arquivocmd = client.commands.get(command)
     if(arquivocmd) {
     if (arquivocmd) arquivocmd.run(client, message, args, prefix);
