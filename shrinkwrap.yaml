@@ -7,6 +7,7 @@ dependencies:
   http: 0.0.0
   moment: 2.26.0
   moment-duration-format: 2.3.2
+  novelcovid: 1.2.7
   opusscript: 0.0.7
   parse-ms: 2.1.0
   path: 0.12.7
@@ -1107,6 +1108,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-CvaGwVMztSMJLOeXPrez7fyfObdZqNUK1cPAEzLHrTybIua9pMdmmPR5YwtfNftIOMv3DPUhFaxsZMNTQO20Kg==
+  /novelcovid/1.2.7:
+    dependencies:
+      node-fetch: 2.6.0
+    dev: false
+    resolution:
+      integrity: sha512-Kfu4pzlBNpLSU+W4tC5oO5fEYB8k//TAK0FZUL/d/YvaEziMgfTlJkgipV5Nr60CwBZbixzyJp/H+gvx1BAyZg==
   /npm-bundled/1.1.1:
     dependencies:
       npm-normalize-package-bin: 1.0.1
@@ -1698,6 +1705,7 @@ specifiers:
   http: ^0.0.0
   moment: ^2.26.0
   moment-duration-format: ^2.2.2
+  novelcovid: ^1.2.7
   opusscript: ^0.0.7
   parse-ms: ^2.0.0
   path: ^0.12.7

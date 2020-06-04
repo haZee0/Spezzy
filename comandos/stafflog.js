@@ -3,6 +3,8 @@ const p = require("../config.json")
 const Discord = require("discord.js")
 
 exports.run = async(client, message, args, prefix) => {
+  
+  
     let erro = new Discord.MessageEmbed()
     .setTitle(`Informações`)
     .setDescription(`**Selecione o canal de punições!**`)
@@ -23,7 +25,7 @@ exports.run = async(client, message, args, prefix) => {
 
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(erroB)
     if(!args.join(" ")) return message.channel.send(erro)
-    if(isNaN(args.join(" "))) return message.channel.send(erro)
+  if(isNaN(args.join(' '))) return message.channel.send(erro)
 
     var canal = db.set(`punichannel_${message.guild.id}`, args.join(" ").trim())
 

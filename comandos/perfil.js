@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async(client, message, args) => {
     const member = message.mentions.users.first() || message.author;
-    const reais = await db.get(`reais_${member.id}`)
+    let reais = await db.get(`reais_${member.id}`)
     if(reais === null) reais = 0;
 
     let emprego = await db.get(`trabalho_${member.id}`)

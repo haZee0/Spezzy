@@ -22,7 +22,8 @@
     "@discordjs/opus": "^0.3.2",
     "opusscript": "^0.0.7",
     "yt-search": "^1.1.2",
-    "parse-ms": "^2.0.0"
+    "parse-ms": "^2.0.0",
+    "novelcovid": "^1.2.7"
   },
   "engines": {
     "node": "12.14.1"

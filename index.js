@@ -16,6 +16,7 @@ const config = require('./config.json');
 const fs = require('fs')
 const { join } = require('path');
 const db = require('quick.db');
+const moment = require('moment')
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -34,7 +35,42 @@ fs.readdir("./comandos/", (err, files) => {{}
   });
 });
 
-client.on('message', message => {
+client.on("messageUpdate", async(oldMessage, newMessage) => {
+  if(oldMessage.content === newMessage.content) {
+    return;
+  }
+        let lEmbed = new Discord.MessageEmbed()
+        .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL())
+        .setThumbnail(oldMessage.author.avatarURL())
+        .setColor('ORANGE')
+        .setDescription("Mensagem editada por um membro!")
+        .addField("Antes:", oldMessage.content, true)
+        .addField("Depois:", newMessage.content, true)
+        .setTimestamp()
+        .setFooter("Spezzy", client.user.avatarURL())
+
+        let lCanal = client.channels.cache.get(db.get(`logCh_${newMessage.guild.id}`))
+
+        lCanal.send(lEmbed)
+
+})
+
+client.on("messageDelete", async message => {
+  let embed = new Discord.MessageEmbed()
+  .setTitle("Mensagem Deletada!")
+  .setColor("ORANGE")
+  .setThumbnail(message.guild.iconURL())
+  .addField("Deletada por:", message.author.tag)
+  .addField("Deletada no canal:", message.channel)
+  .setTimestamp()
+  .setFooter("Spezzy!", client.user.avatarURL())
+
+  let canal = client.channels.cache.get(db.get(`logCh_${message.guild.id}`))
+
+  canal.send(embed);
+});
+
+client.on('message', async message => {
 
   if(message.author.bot) return;
   if (message.channel.type === "dm") return;
@@ -60,6 +96,13 @@ let command = args.shift().toLowerCase();
   .setDescription(`<:erro:712413899638702090> | ${message.author}, não encontrei esse comando em meu sistema!`)
   .setColor('RED')
   
+  let manu = await db.fetch(`manutencao_bot_${command}`);
+      let motivo = await db.fetch(`manutencao_motivo_${command}`);
+      if (manu) {
+        if(message.author.id == "")
+        return message.reply("O comando **" + command + "** esta em manutenção! \n Pelo motivo:" + motivo);
+      }
+  
 let arquivocmd = client.commands.get(command)
     if(arquivocmd) {
     if (arquivocmd) arquivocmd.run(client, message, args, prefix);
@@ -75,8 +118,7 @@ client.on("ready", () => {
       `Utilize ${config.prefix}help para obter ajuda.`,
       `${client.guilds.cache.size} servidores.`,
       `${client.channels.cache.size} canais.`,
-      `${client.users.cache.size} usuários.`,
-      `meu prefixo: s!`
+      `${client.users.cache.size} usuários.`      
     ],
     i = 0;
   setInterval(

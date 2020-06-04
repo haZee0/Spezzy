@@ -38,7 +38,7 @@ exports.run = async(client, message, args) => {
 
   let Divembed = new Discord.MessageEmbed()
    .setTitle("🎉 **Diversão**")
-  .setDescription("`dado` >> Jogue um dado \n `piada` >> Ria com piadas\n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n `sugestao` >> Envie sua sugestão \n `notificar` >> Receba o cargo de notificações do servidor de suporte\n `kiss` >> 'Beije' algum usuário")
+  .setDescription("`dado` >> Jogue um dado \n `piada` >> Ria com piadas\n `servericon` >> Veja a imagem do servidor \n `ping` >> Veja a latência do bot \n `sugestao` >> Envie sua sugestão \n `notificar` >> Receba o cargo de notificações do servidor de suporte\n `kiss` >> 'Beije' algum usuário \n `hug` 'Abraçe' algum usuário")
    .setFooter("Para todos os comandos funcionarem corretamente, o cargo do Spezzy deve estar acima de todos os outros!");
   
   let Membed = new Discord.MessageEmbed()
