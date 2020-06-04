@@ -30,7 +30,7 @@ fs.readdir("./comandos/", (err, files) => {{}
   let arquivojs = files.filter(f => f.split(".").pop() == "js");
   arquivojs.forEach((f, i) => {
   let props = require(`./comandos/${f}`);
-  console.log(`Comando ${f} carregado com sucesso`);
+  console.log(`✅ | Comando ${f} carregado com sucesso`);
   client.commands.set(props.help.name,props);
   });
 });
