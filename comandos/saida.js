@@ -2,6 +2,8 @@ exports.run = async(client, message, args) => {
 
         const db = require('quick.db')
         const { MessageEmbed } = require('discord.js')
+        
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('você não tem permissão para utilizar esse comando!')
 
         const embed = new MessageEmbed()
             .setTitle(`__MENSAGEM__`)

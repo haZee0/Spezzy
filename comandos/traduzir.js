@@ -26,7 +26,7 @@ exports.run = async(client, message, args) => {
   let e = new Discord.MessageEmbed()
   .setAuthor("Lingua não encontrada!")
   .setTitle("Linguas disponíveis:")
-  .setDescription("```auto: Automatic \n ar: Arabe \n nl: Holandes \n eng: Inglês \n fr: Frances \n de: Alemão \n el: Grego \n it: Italiano \n ja: Japones \n jw: Javanes \n kn: Kannada \n ko: Coreano \n pt: Portugues \n ro: Romano \n ru: Russo \n es: Espanhol```")
+  .setDescription("```auto: Automatic \n ar: Arabe \n nl: Holandes \n en: Inglês \n fr: Frances \n de: Alemão \n el: Grego \n it: Italiano \n ja: Japones \n jw: Javanes \n kn: Kannada \n ko: Coreano \n pt: Portugues \n ro: Romano \n ru: Russo \n es: Espanhol```")
   .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Translate_Icon.png")
   .setColor('BLUE')
   
@@ -48,7 +48,7 @@ exports.run = async(client, message, args) => {
     .setTitle("Google Tradutor")
     .setColor('BLUE')
     .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Translate_Icon.png")
-    .setDescription(`Comando utilizado po: ${message.author.tag}`, message.author.avatarURL())
+    .setDescription(`Comando utilizado por: ${message.author.tag}`, message.author.avatarURL())
     .addField('Texto original:', msg)
     .addField('Texto traduzido', res.text)
     .setTimestamp()

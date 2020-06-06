@@ -4,7 +4,7 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ."
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
@@ -24,7 +24,9 @@
     "simple-youtube-api": "^5.2.1",
     "yt-search": "^1.1.2",
     "ytdl-core": "^2.1.4",
-    "ytdl-core-discord": "^1.2.0"
+    "ytdl-core-discord": "^1.2.0",
+    "os": "^0.1.1",
+    "cpu-stat": "^2.0.1"
   },
   "engines": {
     "node": "12.14.1"

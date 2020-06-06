@@ -18,6 +18,7 @@ const { join } = require('path');
 const db = require('quick.db');
 const moment = require('moment')
 
+
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
@@ -35,7 +36,9 @@ fs.readdir("./comandos/", (err, files) => {{}
   });
 });
 
-client.on("messageUpdate", async(oldMessage, newMessage) => {
+client.on("messageUpdate", async(oldMessage, newMessage, message) => {
+  const lcanal = newMessage.guild.channels.cache.get(db.get(`logCh_${newMessage.guild.id}`))
+
   if(oldMessage.content === newMessage.content) {
     return;
   }
@@ -48,27 +51,34 @@ client.on("messageUpdate", async(oldMessage, newMessage) => {
         .addField("Depois:", newMessage.content, true)
         .setTimestamp()
         .setFooter("Spezzy", client.user.avatarURL())
-
-        let lCanal = client.channels.cache.get(db.get(`logCh_${newMessage.guild.id}`))
-
-        lCanal.send(lEmbed)
+        
+        newMessage.guild.channels.cache.get(lcanal)
+  
+        lcanal.send(lEmbed)
 
 })
 
 client.on("messageDelete", async message => {
+  const canal = message.guild.channels.cache.get(db.get(`logCh_${message.guild.id}`));
+
   let embed = new Discord.MessageEmbed()
   .setTitle("Mensagem Deletada!")
   .setColor("ORANGE")
   .setThumbnail(message.guild.iconURL())
   .addField("Deletada por:", message.author.tag)
   .addField("Deletada no canal:", message.channel)
+  .addField("Mensagem deletada:", message)
   .setTimestamp()
   .setFooter("Spezzy!", client.user.avatarURL())
 
-  let canal = client.channels.cache.get(db.get(`logCh_${message.guild.id}`))
+  message.guild.channels.cache.get(canal)
+  
+  canal.send(embed)
+  
+  
 
-  canal.send(embed);
 });
+
 
 client.on('message', async message => {
 
@@ -93,14 +103,15 @@ let command = args.shift().toLowerCase();
   
   
   let embed = new Discord.MessageEmbed()
-  .setDescription(`<:erro:712413899638702090> | ${message.author}, não encontrei esse comando em meu sistema!`)
+  .setTitle("❌ | Erro")
+  .setDescription("💥 Não encontrei esse comando em meu sistema, utilize " + prefix + "help para conseguir ajuda!")
   .setColor('RED')
   
 let arquivocmd = client.commands.get(command)
     if(arquivocmd) {
     if (arquivocmd) arquivocmd.run(client, message, args, prefix);
   } else {
-    message.channel.send(embed);
+    message.channel.send(`${message.author}`, embed);
   }
 
 });
